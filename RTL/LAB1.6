@@ -1,0 +1,22 @@
+module LAB6(
+    input wire KEY1,
+    input wire KEY2,
+    input wire KEY3,
+    output reg LED0,
+    output reg LED1,
+    output reg LED2,
+    output reg LED3
+);
+	
+	always @ (KEY2, KEY3, KEY1)
+	if (KEY1 == 1)
+	{LED3, LED2, LED1, LED0} = 4'b1111;
+	else
+		case({KEY2, KEY3})
+		2'b00: {LED3, LED2, LED1, LED0} = 4'b1110;
+		2'b01: {LED3, LED2, LED1, LED0} = 4'b1101;
+		2'b10: {LED3, LED2, LED1, LED0} = 4'b1011;
+		2'b11: {LED3, LED2, LED1, LED0} = 4'b0111;
+		default: {LED3, LED2, LED1, LED0} = 4'b1111;
+		endcase
+endmodule
