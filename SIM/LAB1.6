@@ -1,0 +1,50 @@
+`timescale 1ns / 1ps
+
+module tb_LAB6;
+
+    reg KEY1;
+    reg KEY2;
+    reg KEY3;
+
+    wire LED0;
+    wire LED1;
+    wire LED2;
+    wire LED3;
+
+    LAB6 uut (
+        .KEY1(KEY1), 
+        .KEY2(KEY2), 
+        .KEY3(KEY3), 
+        .LED0(LED0), 
+        .LED1(LED1), 
+        .LED2(LED2), 
+        .LED3(LED3)
+    );
+
+    initial begin
+        KEY1 = 0;
+        KEY2 = 0;
+        KEY3 = 0;
+
+        #100;
+		  
+        #10 KEY1 = 0; KEY2 = 0; KEY3 = 0;
+        #10 KEY1 = 0; KEY2 = 0; KEY3 = 1;
+        #10 KEY1 = 0; KEY2 = 1; KEY3 = 0;
+        #10 KEY1 = 0; KEY2 = 1; KEY3 = 1;
+
+        #10 KEY1 = 1; KEY2 = 0; KEY3 = 0;
+        #10 KEY1 = 1; KEY2 = 0; KEY3 = 1;
+        #10 KEY1 = 1; KEY2 = 1; KEY3 = 0;
+        #10 KEY1 = 1; KEY2 = 1; KEY3 = 1;
+
+        #10 KEY1 = 1; KEY2 = 0; KEY3 = 0;
+        #10 KEY1 = 1; KEY2 = 0; KEY3 = 1;
+        #10 KEY1 = 1; KEY2 = 1; KEY3 = 0;
+        #10 KEY1 = 1; KEY2 = 1; KEY3 = 1;
+
+        
+        #100 $finish;
+    end
+    
+endmodule
